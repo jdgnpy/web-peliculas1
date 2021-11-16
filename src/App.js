@@ -3,14 +3,36 @@ import './App.css';
 
 
 function App() {
-  const [pelicula, setPelicula] = useState('');
-  const [result, setResult] = useState('');
+  const [pelicula, setPelicula] = useState({busqueda: '', resultado: {}});
+  const [result, setResult] = useState();
 
-  const handleSubmit = (event) =>{
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     //console.log(pelicula);
-    setResult('Mostrando resultados para ' + pelicula);
+
+
+    //const resultbusqueda = fetchpeliculas(pelicula.busqueda);
+    //setResult(resultbusqueda)
+
+
+    const resultado = (
+      <>
+        <p>Mostrando resultados para {pelicula.busqueda}</p>
+      </>
+    );
+
+    setResult(resultado);
+
+
+
   }
+
+
+  const fetchPeliculas = (pelicula) => {
+
+  }
+
 
 
   return (
@@ -19,14 +41,15 @@ function App() {
 
       <form onSubmit={handleSubmit}>
         <input 
-          id="input"
-          onChange={(e) => setPelicula(e.target.value)}
-          value={pelicula}
+          id="busqueda"
+          onChange={(e) => setPelicula(prevSate => ({...prevSate, [e.target.id] : e.target.value}))} //cargo en pelicula.busqueda el titulo que se busco
+          value={pelicula.busqueda}
           placeholder="Ex: 'Pulp Fiction'"
         />
         <input type="submit" value="Buscar"/>
       </form>
-      <p>{result}</p>
+
+      {result}
 
 
     </>
