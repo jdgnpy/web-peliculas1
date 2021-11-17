@@ -5,8 +5,6 @@ import './App.css';
 function App() {
   const [pelicula, setPelicula] = useState('');
   const [bpeli, setBpeli] = useState(null);
-  //const [loading, setLoading] = useState(true);
-  //const [error, setError] = useState(null);
   const [result, setResult] = useState('');
 
 //---- hook use effect ----
@@ -24,9 +22,6 @@ function App() {
     .catch(error =>{
       console.log(error);
     })
-    //.finally(()=>{
-    //  setLoading(false);
-    //})
   },[pelicula]);
 
 
@@ -34,12 +29,12 @@ function App() {
   const fClick = (event) => {
     event.preventDefault();
     //console.log(bpeli);
-    fmapeo();
+    fMapeo();
     setPelicula('');
   }
 
 //------- funcion para mapear resultado --------
-  const fmapeo = () =>{
+  const fMapeo = () =>{
     if (pelicula !== '' && bpeli.Error !== "Movie not found!"){
       const resultado = (
         <>
